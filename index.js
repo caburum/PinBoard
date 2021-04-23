@@ -27,8 +27,15 @@ client.on('channelPinsUpdate', async (channel, time) => {
 				return;
 			}
 
+			if (message.content.length > 2048 - 3) {
+				messageContent = message.content.substring(0, 2048 - 3) + '...';
+			} else {
+				messageContent = message.content;
+			}
+
 			let embed = new Discord.MessageEmbed()
-				.setDescription(`${message.content}\n\n[Jump to message](https://discord.com/channels/${message.guild.id}/${message.channel.id}/${message.id}) in <#${message.channel.id}>`)
+				.setDescription(messageContent)
+				.addField('_ _', `[Jump to message](https://discord.com/channels/${message.guild.id}/${message.channel.id}/${message.id}) in <#${message.channel.id}>`)
 				.setTimestamp(message.createdAt)
 
 			if (message.attachments.size > 0) {
