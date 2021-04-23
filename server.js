@@ -3,7 +3,7 @@ const express = require('express');
 const server = express();
 
 server.all('/', (req, res)=>{
-  res.send('Discord PinBot');
+  res.send('Discord PinBot<br /><a href="https://discord.com/api/oauth2/authorize?client_id=809803000066867225&permissions=8192&scope=bot">Invite</a>');
 })
 
 function keepAlive(){
